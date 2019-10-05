@@ -14,7 +14,8 @@ stages{
         stage('Build'){
             steps {
                 sh 'cd /server/'
-                sh 'mvn clean package'
+                sh 'mvn clean'
+                sh 'mvn package'
             }
             post {
                 success {
