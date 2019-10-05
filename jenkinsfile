@@ -11,6 +11,18 @@ pipeline {
      }
 
 stages{
+
+        stage( 'checkout repo'){
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/deepakpri/maven-project.git']]])
+            }
+            post {
+                success { 
+                    echo 'checkout of repo completed'
+                    }
+                  }
+              }
+
         stage('Build'){
             steps {
                 sh 'cd /server/'
